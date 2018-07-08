@@ -2,6 +2,7 @@ const oasPathToKoaPath = require('./oasPathToKoaPath')
 const getMiddleware = require('./getMiddleware')
 
 function bootstrapOperation ({
+  api,
   handlerRoot,
   koaRouter,
   method,
@@ -11,6 +12,7 @@ function bootstrapOperation ({
   koaRouter[method](
     oasPathToKoaPath(path),
     ...getMiddleware({
+      api,
       handlerRoot,
       koaRouter,
       method,

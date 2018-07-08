@@ -20,6 +20,20 @@ npm install --save listener-from-oas3
 yarn add listener-from-oas3
 ```
 
+# Handlers
+
+The signature for handlers is
+`async myHandler(ctx)`
+
+The ctx object is the same as the koa ctx object but also includes:
+
+## ctx.req.security
+Object where each property is the name of a security definition applicable to the operation and it's provided value.
+
+for http bearer, value will be the bearer token string  
+
+for http basic, value will be a `{userId, password}` object
+
 # Examples
 
 # Basic usage

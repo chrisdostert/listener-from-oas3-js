@@ -1,13 +1,17 @@
-const koaBodyParser = require('koa-bodyparser')({ enableTypes: ['text'] })
+const requestBody = require('./requestBody')
+const security = require('./security')
 const resolveHandler = require('./resolveHandler')
 
 function getMiddleware ({
+  api,
   handlerRoot,
   method,
   operation,
   path
 }) {
-  const middleware = [
+  return [
+    ...requestBody({operation}),
+    ...security({api, operation}),
     resolveHandler({
       handlerRoot,
       method,
@@ -15,11 +19,6 @@ function getMiddleware ({
       operation
     })
   ]
-  if (operation.requestBody) {
-    middleware.unshift(koaBodyParser)
-  }
-
-  return middleware
 }
 
 module.exports = getMiddleware

@@ -12,10 +12,10 @@ async function getKoaRouter (
   apiDefRef,
   handlerRoot
 ) {
-  const { paths } = await jsonSchemaRefParser.dereference(apiDefRef)
+  const api = await jsonSchemaRefParser.dereference(apiDefRef)
 
   // iterate over defined paths
-  Object.entries(paths)
+  Object.entries(api.paths)
     .forEach(([path, methods]) =>
       // iterate over defined methods of each path
       Object.entries(methods)
@@ -25,6 +25,7 @@ async function getKoaRouter (
           }
 
           bootstrapOperation({
+            api,
             handlerRoot,
             koaRouter,
             method,

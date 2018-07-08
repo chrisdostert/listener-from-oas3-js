@@ -1,6 +1,6 @@
 {
   "name": "listener-from-oas3",
-  "version": "0.0.0-alpha",
+  "version": "0.0.0-alpha.3",
   "description": "Javascript library which generates a native http server listener from a v3 open api spec",
   "main": "index.js",
   "scripts": {
@@ -11,10 +11,9 @@
     "url": "git+https://github.com/chrisdostert/listener-from-oas3-js.git"
   },
   "keywords": [
-    "schedule",
-    "occurrence",
-    "luxon",
-    "timezones"
+    "open api 3",
+    "oas3",
+    "listener"
   ],
   "license": "MIT",
   "bugs": {
@@ -22,6 +21,7 @@
   },
   "homepage": "https://github.com/chrisdostert/listener-from-oas3-js#readme",
   "dependencies": {
+    "basic-auth": "^2.0.0",
     "json-schema-ref-parser": "^5.0.3",
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.1",
