@@ -17,8 +17,8 @@ function basic (name) {
 
     const parsedBasicAuth = basicAuth.parse(authHeader) || {}
 
-    koaCtx.request.security = {
-      ...koaCtx.request.security,
+    koaCtx.security = {
+      ...koaCtx.security,
       [name]: {
         userId: parsedBasicAuth.name,
         password: parsedBasicAuth.pass

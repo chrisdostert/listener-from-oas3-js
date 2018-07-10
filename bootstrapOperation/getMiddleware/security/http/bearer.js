@@ -13,8 +13,8 @@ function bearer (name) {
       return next()
     }
 
-    koaCtx.request.security = {
-      ...koaCtx.request.security,
+    koaCtx.security = {
+      ...koaCtx.security,
       [name]: value
     }
 

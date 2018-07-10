@@ -27,8 +27,10 @@ The signature for handlers is
 
 The ctx object is the same as the koa ctx object but also includes:
 
-## ctx.req.security
+## ctx.security
 Object where each property is the name of a security definition applicable to the operation and it's provided value.
+
+for oauth2, value will be the bearer token string  
 
 for http bearer, value will be the bearer token string  
 
