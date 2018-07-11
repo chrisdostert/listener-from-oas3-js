@@ -7,22 +7,22 @@
 function oauth2 ({
   name
 }) {
-  const middleware = async (koaCtx, next) => {
-    const authHeader = koaCtx.request.headers.authorization
-    const [scheme, value] = authHeader ? authHeader.split(' ') : []
-    if (!scheme || scheme.toLowerCase() !== 'bearer') {
+  return [
+    async (koaCtx, next) => {
+      const authHeader = koaCtx.request.headers.authorization
+      const [scheme, value] = authHeader ? authHeader.split(' ') : []
+      if (!scheme || scheme.toLowerCase() !== 'bearer') {
+        return next()
+      }
+
+      koaCtx.security = {
+        ...koaCtx.security,
+        [name]: value
+      }
+
       return next()
     }
-
-    koaCtx.security = {
-      ...koaCtx.security,
-      [name]: value
-    }
-
-    return next()
-  }
-
-  return [middleware]
+  ]
 }
 
 module.exports = oauth2

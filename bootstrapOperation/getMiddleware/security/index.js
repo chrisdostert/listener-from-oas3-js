@@ -2,16 +2,17 @@ const http = require('./http')
 const oauth2 = require('./oauth2')
 
 /**
- * gets middleware to handle security declarations applicable to the current operation
+ * gets middleware which handles security
  */
-function security ({
+function getSecurityMiddleware ({
   api,
   operation
 }) {
   const middleware = []
-  // api security subordinate to operation security
-  const securityItems = [...(api.security || []), ...(operation.security || [])]
-  securityItems.forEach(securityItem => {
+
+  // security can be declared at api &/or operation levels.
+  const security = [...(api.security || []), ...(operation.security || [])]
+  security.forEach(securityItem => {
     Object.entries(securityItem)
       .forEach(([name]) => {
         const {scheme, type} = api.components.securitySchemes[name]
@@ -28,4 +29,4 @@ function security ({
   return middleware
 }
 
-module.exports = security
+module.exports = getSecurityMiddleware

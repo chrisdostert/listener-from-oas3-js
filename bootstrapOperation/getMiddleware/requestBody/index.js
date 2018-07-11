@@ -1,9 +1,9 @@
 const koaBodyParser = require('koa-bodyparser')
 
 /**
- * gets middleware to handle requestBody declarations
+ * gets middleware which handles requestBody
  */
-function requestBody ({
+function getRequestBodyMiddleware ({
   operation
 }) {
   const middleware = []
@@ -33,4 +33,4 @@ function requestBody ({
   return middleware
 }
 
-module.exports = requestBody
+module.exports = getRequestBodyMiddleware

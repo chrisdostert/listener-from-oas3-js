@@ -27,6 +27,12 @@ The signature for handlers is
 
 The ctx object is the same as the koa ctx object but also includes:
 
+### ctx.parameters.path
+Object where each property is the name of a path parameter applicable to the operation and it's provided value.
+
+### ctx.parameters.query
+Object where each property is the name of a query parameter applicable to the operation and it's provided value.
+
 ## ctx.security
 Object where each property is the name of a security definition applicable to the operation and it's provided value.
 
