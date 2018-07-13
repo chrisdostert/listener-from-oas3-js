@@ -8,24 +8,24 @@ function getRequestBodyMiddleware ({
 }) {
   const middleware = []
   if (operation.requestBody) {
-    const enabledTypes = []
+    const enableTypes = []
     Object.entries(operation.requestBody.content)
       .forEach(([name, value]) => {
         switch (name.toLowerCase()) {
           case 'application/x-www-form-urlencoded':
-            enabledTypes.push('form')
+            enableTypes.push('form')
             break
           case 'application/json':
-            enabledTypes.push('json')
+            enableTypes.push('json')
             break
           case 'text/plain':
-            enabledTypes.push('text')
+            enableTypes.push('text')
             break
         }
       })
     middleware.push(
       koaBodyParser({
-        enabledTypes
+        enableTypes
       })
     )
   }
