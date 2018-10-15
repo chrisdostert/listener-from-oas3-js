@@ -8,8 +8,8 @@ function inQuery (parameters) {
       let value = koaCtx.request.query[parameter.name]
 
       if (
-        parameter.schema &&
-        parameter.schema.properties &&
+        parameter.content &&
+        parameter.content['application/json'] &&
         value
       ) {
         // parse object params

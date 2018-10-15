@@ -33,6 +33,8 @@ Object where each property is the name of a path parameter applicable to the ope
 ### ctx.parameters.query
 Object where each property is the name of a query parameter applicable to the operation and it's provided value.
 
+parameters declared w/ application/json content will be deserialized
+
 ## ctx.security
 Object where each property is the name of a security definition applicable to the operation and it's provided value.
 
